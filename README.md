@@ -46,6 +46,9 @@ Este projeto foi construído do zero como estudo prático de Spring Boot, evolui
 
 O projeto segue a arquitetura em camadas padrão do Spring:
 
+```
+Controller → Service → Repository → Banco de Dados
+```
 
 Com tratamento centralizado de exceções (`GlobalExceptionHandler`) e configuração de segurança isolada (`SecurityConfig`, `JwtAuthFilter`, `JwtAuthenticationEntryPoint`).
 
@@ -66,13 +69,16 @@ Com tratamento centralizado de exceções (`GlobalExceptionHandler`) e configura
 3. Copie `src/main/resources/application.properties.example` para `src/main/resources/application.properties`
 4. Preencha o `application.properties` com suas credenciais reais (senha do MySQL, senha do admin padrão, e uma chave JWT)
 5. Rode a aplicação:
+```
+   mvn spring-boot:run
+```
 6. A API sobe em `http://localhost:9090`
 
 Um usuário administrador é criado automaticamente na primeira inicialização, com o email/senha definidos no `application.properties`.
 
 ### Front-end
 
-O front-end está na pasta `front-end/`, dentro deste mesmo repositório. Para rodar, abra a pasta `frontend` no VS Code e use a extensão **Live Server** (clique com o botão direito em `index.html` → "Open with Live Server"). Certifique-se de que a API (backend) já está rodando em `http://localhost:9090`.
+O front-end está na pasta `front-end/`, dentro deste mesmo repositório. Para rodar, abra a pasta `front-end` no VS Code e use a extensão **Live Server** (clique com o botão direito em `index.html` → "Open with Live Server"). Certifique-se de que a API (backend) já está rodando em `http://localhost:9090`.
 
 ## Aprendizados deste projeto
 
