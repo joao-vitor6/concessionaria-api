@@ -76,6 +76,17 @@ Com tratamento centralizado de exceções (`GlobalExceptionHandler`) e configura
 
 Um usuário administrador é criado automaticamente na primeira inicialização, com o email/senha definidos no `application.properties`.
 
+### Primeiros passos após rodar
+
+O banco de dados começa **vazio** — não existem carros, clientes, vendedores ou secretárias cadastrados por padrão, à exceção do usuário administrador criado automaticamente. Para começar a usar o sistema:
+
+1. Acesse o front-end e faça login com o email/senha do admin definidos no `application.properties`
+2. No painel administrativo, cadastre os **carros** que vão aparecer no catálogo
+3. Crie contas de **Vendedor** e/ou **Secretária**, se quiser testar esses papéis (via `POST /usuarios/funcionario`, endpoint exclusivo do admin — não há tela própria para isso no front-end, use uma ferramenta como Postman ou Insomnia)
+4. Novos clientes podem se cadastrar sozinhos pelo site (tela de cadastro público), ou o admin/secretária pode cadastrá-los manualmente pelo painel
+
+A partir daí, o sistema funciona normalmente: clientes podem favoritar e comprar carros, agendar visitas com vendedores, e assim por diante.
+
 ### Front-end
 
 O front-end está na pasta `front-end/`, dentro deste mesmo repositório. Para rodar, abra a pasta `front-end` no VS Code e use a extensão **Live Server** (clique com o botão direito em `index.html` → "Open with Live Server"). Certifique-se de que a API (backend) já está rodando em `http://localhost:9090`.
