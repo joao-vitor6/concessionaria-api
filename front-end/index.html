@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar — Concessionária</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="auth-layout">
+    <div class="auth-hero">
+      <div class="auth-hero-brand">CONCESSIONÁRIA</div>
+      <h1>Seu próximo carro está a um login de distância.</h1>
+      <p>Acesse sua conta para ver o catálogo, acompanhar suas compras e muito mais.</p>
+    </div>
+
+    <div class="auth-panel">
+      <div class="auth-card">
+        <h2>Entrar</h2>
+        <p class="subtitle">Informe seus dados para acessar sua conta.</p>
+
+        <div id="mensagem" class="form-message"></div>
+
+        <form id="form-login">
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" required autocomplete="current-password">
+          </div>
+          <button type="submit" class="btn-primary">Entrar</button>
+        </form>
+
+        <p class="auth-switch">Ainda não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

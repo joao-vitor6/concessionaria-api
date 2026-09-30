@@ -1,0 +1,902 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #12151A;
+  --surface: #1B1F27;
+  --surface-elevated: #20242D;
+  --text: #EDEEF0;
+  --text-muted: #8B93A1;
+  --accent: #E3A857;
+  --accent-soft: rgba(227, 168, 87, 0.12);
+  --accent-secondary: #5B7FA6;
+  --border: #2B303B;
+  --danger: #E0665A;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* ===== Telas de autenticação (login / cadastro) ===== */
+
+.auth-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  min-height: 100vh;
+}
+
+.auth-hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 56px;
+  background: linear-gradient(160deg, #1A1E26 0%, #12151A 55%, #0D0F13 100%);
+}
+
+.auth-hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 140%;
+  height: 70%;
+  background: linear-gradient(115deg, transparent 40%, rgba(227, 168, 87, 0.14) 48%, transparent 56%);
+  transform: rotate(-6deg);
+  pointer-events: none;
+}
+
+.auth-hero-brand {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: auto;
+}
+
+.auth-hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1.08;
+  max-width: 11ch;
+  margin-bottom: 20px;
+}
+
+.auth-hero p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 34ch;
+  line-height: 1.5;
+}
+
+.auth-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+}
+
+.auth-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.auth-card .subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+}
+
+.auth-switch {
+  margin-top: 24px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.auth-switch a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 860px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
+  }
+  .auth-hero {
+    padding: 32px;
+    min-height: 220px;
+  }
+  .auth-hero p {
+    display: none;
+  }
+}
+
+/* ===== Formulários e campos (reutilizados em várias telas) ===== */
+
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.field input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1rem;
+  padding: 8px 2px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  transition: border-color 0.2s ease;
+}
+
+.field input:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+
+.field input:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 4px;
+}
+
+.field select {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1rem;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.field select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--accent);
+  color: #1A1509;
+  border: none;
+  padding: 14px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background: #EFB86F;
+}
+
+.btn-primary:active {
+  transform: scale(0.99);
+}
+
+.form-message {
+  display: none;
+  padding: 12px 14px;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  margin-bottom: 20px;
+}
+
+.form-message.error {
+  display: block;
+  background: rgba(224, 102, 90, 0.12);
+  border: 1px solid rgba(224, 102, 90, 0.3);
+  color: #F0958B;
+}
+
+.form-message.success {
+  display: block;
+  background: var(--accent-soft);
+  border: 1px solid rgba(227, 168, 87, 0.3);
+  color: var(--accent);
+}
+
+/* ===== Navbar e layout geral de páginas internas ===== */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-brand {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-ghost {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.page-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 40px;
+}
+
+.page-header {
+  margin-bottom: 32px;
+}
+
+.page-header h1 {
+  font-size: 1.9rem;
+  margin-bottom: 6px;
+}
+
+.page-header p {
+  color: var(--text-muted);
+}
+
+.empty-state {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 60px 0;
+}
+
+.car-grid .empty-state {
+  grid-column: 1 / -1;
+}
+
+/* ===== Catálogo de carros ===== */
+
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.car-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 24px;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+  cursor: pointer;
+}
+
+.car-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.car-card .car-marca {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.car-card h3 {
+  font-size: 1.3rem;
+  margin: 4px 0 12px;
+}
+.car-specs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.car-specs-info {
+  display: flex;
+  gap: 16px;
+}
+.car-price {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.4rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.car-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.car-image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-elevated);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ===== Minhas Compras ===== */
+
+.compra-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 24px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.compra-info h3 {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+.compra-info .compra-data {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.compra-valor {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.25rem;
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ===== Painel administrativo ===== */
+
+.admin-nav-links {
+  display: flex;
+  gap: 4px;
+}
+
+.admin-nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-size: 0.92rem;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.admin-nav-links a:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.admin-nav-links a.active {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.page-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+}
+
+.btn-secondary {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 14px 18px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--border);
+  font-weight: 500;
+}
+
+.admin-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.94rem;
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table .acoes {
+  white-space: nowrap;
+}
+
+.admin-table .acoes .link-acao + .link-acao {
+  margin-left: 14px;
+}
+
+.link-acao {
+  background: none;
+  border: none;
+  color: var(--accent-secondary);
+  cursor: pointer;
+  font-size: 0.88rem;
+  padding: 0;
+}
+
+.link-acao.excluir {
+  color: var(--danger);
+}
+
+.link-acao:hover {
+  text-decoration: underline;
+}
+
+.form-panel {
+  display: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.form-panel.aberto {
+  display: block;
+}
+
+.form-panel h3 {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.form-panel .form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.form-panel .btn-primary,
+.form-panel .btn-secondary {
+  width: auto;
+}
+
+/* ===== Modal de detalhes do carro ===== */
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+#alerta-overlay,
+#confirmar-overlay {
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.modal-overlay.aberto {
+  display: flex;
+}
+
+.modal-conteudo {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  overflow: hidden;
+  position: relative;
+  max-height: 90vh;
+}
+
+.modal-fechar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.55);
+  border: none;
+  color: var(--text);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  z-index: 2;
+  transition: background 0.2s ease;
+}
+
+.modal-fechar:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-imagem-container {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-elevated);
+  min-height: 540px;
+  cursor: zoom-in;
+}
+
+.modal-badge-disponivel {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  z-index: 2;
+  letter-spacing: 0.02em;
+}
+
+.modal-imagem {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.25s ease-out;
+  transform-origin: center;
+}
+
+.modal-imagem-container.zoom {
+  cursor: zoom-out;
+}
+
+.modal-imagem-container.zoom .modal-imagem {
+  transform: scale(2.2);
+}
+
+.modal-detalhes {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-eyebrow {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.modal-detalhes h2 {
+  font-size: 1.9rem;
+  margin: 6px 0 24px;
+  line-height: 1.15;
+}
+
+.modal-specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.modal-spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modal-spec-label {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.modal-spec-valor {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.modal-preco-bloco {
+  margin-bottom: 20px;
+}
+
+.modal-preco-label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.modal-detalhes .car-price {
+  font-size: 2rem;
+}
+
+@media (max-width: 700px) {
+  .modal-conteudo {
+    grid-template-columns: 1fr;
+  }
+  .modal-imagem-container {
+    min-height: 240px;
+  }
+  .modal-detalhes {
+    padding: 24px;
+  }
+}
+.perfil-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.perfil-drawer-overlay.aberto {
+  opacity: 1;
+  visibility: visible;
+}
+
+.perfil-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+  z-index: 91;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.perfil-drawer-overlay.aberto .perfil-drawer {
+  transform: translateX(0);
+}
+
+.perfil-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.perfil-drawer-fechar {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.perfil-drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.perfil-drawer-nav a {
+  padding: 12px 14px;
+  border-radius: 4px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.15s ease, color 0.15s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.perfil-drawer-overlay.aberto .perfil-drawer-nav a {
+  animation: descerEEsvair 0.35s ease forwards;
+}
+
+.perfil-drawer-overlay.aberto .perfil-drawer-nav a:nth-child(1) { animation-delay: 0.15s; }
+.perfil-drawer-overlay.aberto .perfil-drawer-nav a:nth-child(2) { animation-delay: 0.22s; }
+.perfil-drawer-overlay.aberto .perfil-drawer-nav a:nth-child(3) { animation-delay: 0.29s; }
+
+@keyframes descerEEsvair {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.perfil-drawer-nav a:hover {
+  background: var(--surface-elevated);
+  color: var(--text);
+}
+
+.perfil-drawer-nav a.ativo-atual {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.btn-favorito {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--text-muted);
+  padding: 0;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-favorito:hover {
+  transform: scale(1.15);
+}
+
+.btn-favorito.favoritado {
+  color: var(--danger);
+}
+
+.prompt-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.prompt-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+
+.prompt-card .subtitle {
+  margin-bottom: 20px;
+}
+
+.horarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.horario-slot {
+  padding: 10px 0;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--surface-elevated);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.horario-slot:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.horario-slot.selecionado {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1A1509;
+  font-weight: 600;
+}
+
+.horario-slot:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.horarios-dica {
+  grid-column: 1 / -1;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+

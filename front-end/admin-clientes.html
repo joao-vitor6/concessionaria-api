@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Clientes — Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="admin-carros.html" class="navbar-brand">CONCESSIONÁRIA · ADMIN</a>
+    <div class="admin-nav-links">
+      <a href="admin-carros.html">Carros</a>
+      <a href="admin-clientes.html" class="active">Clientes</a>
+      <a href="admin-usuarios.html">Usuários</a>
+      <a href="admin-compras.html">Compras</a>
+      <a href="admin-agendamentos.html">Agendamentos</a>
+      <a href="admin-auditoria.html">Auditoria</a>
+    </div>
+    <div class="navbar-actions">
+      <button id="btn-logout" class="btn-ghost">Sair</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="page-header-row">
+      <div class="page-header" style="margin-bottom: 0;">
+        <h1>Gestão de clientes</h1>
+        <p>Cadastre, edite e remova clientes da concessionária.</p>
+      </div>
+      <button id="btn-novo" class="btn-secondary">+ Novo cliente</button>
+    </div>
+
+    <div id="mensagem" class="form-message"></div>
+
+    <div id="form-panel" class="form-panel">
+      <h3 id="form-titulo">Novo cliente</h3>
+      <form id="form-cliente">
+        <input type="hidden" id="cliente-id">
+        <div class="form-grid">
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" required>
+          </div>
+          <div class="field">
+            <label for="cpf">CPF</label>
+            <input type="text" id="cpf" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+          </div>
+          <div class="field">
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" required>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Salvar</button>
+          <button type="button" id="btn-cancelar" class="btn-secondary">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>CPF</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Atualizado por</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-clientes"></tbody>
+    </table>
+  </div>
+
+  <div id="alerta-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3 id="alerta-titulo">Aviso</h3>
+      <p id="alerta-mensagem" class="subtitle"></p>
+      <div class="form-actions">
+        <button id="alerta-ok" class="btn-primary" style="width: auto;">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmar-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3 id="confirmar-titulo">Confirmar</h3>
+      <p id="confirmar-mensagem" class="subtitle"></p>
+      <div class="form-actions">
+        <button id="confirmar-sim" class="btn-primary" style="width: auto;">Confirmar</button>
+        <button id="confirmar-nao" class="btn-secondary">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin-clientes.js"></script>
+</body>
+</html>

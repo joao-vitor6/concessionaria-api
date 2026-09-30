@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minhas Vendas — Vendedor</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="vendedor-agendamentos.html" class="navbar-brand">CONCESSIONÁRIA · VENDEDOR</a>
+    <div class="admin-nav-links">
+      <a href="vendedor-agendamentos.html">Meus Agendamentos</a>
+      <a href="vendedor-vendas.html" class="active">Minhas Vendas</a>
+    </div>
+    <div class="navbar-actions">
+      <button id="btn-logout" class="btn-ghost">Sair</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="page-header">
+      <h1>Minhas vendas</h1>
+      <p>Histórico de veículos vendidos por você.</p>
+    </div>
+
+    <div id="mensagem" class="form-message"></div>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Carro</th>
+          <th>Data</th>
+          <th>Valor pago</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-vendas"></tbody>
+    </table>
+  </div>
+
+  <script src="js/vendedor-vendas.js"></script>
+</body>
+</html>

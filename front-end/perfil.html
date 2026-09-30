@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Perfil — Concessionária</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="catalogo.html" class="navbar-brand">CONCESSIONÁRIA</a>
+    <div class="navbar-actions">
+      <a href="catalogo.html" class="btn-ghost" style="text-decoration: none;">Catálogo</a>
+      <a href="minhas-compras.html" class="btn-ghost" style="text-decoration: none;">Minhas Compras</a>
+      <button id="perfil-trigger" class="btn-ghost">Perfil</button>
+      <button id="btn-logout" class="btn-ghost">Sair</button>
+    </div>
+  </nav>
+
+  <div class="page-content" style="max-width: 640px;">
+    <div class="page-header">
+      <h1 id="titulo-perfil">Meu perfil</h1>
+      <p>Atualize seus dados pessoais e sua senha.</p>
+    </div>
+
+    <div id="mensagem-dados" class="form-message"></div>
+
+    <div class="form-panel aberto" style="margin-bottom: 32px;">
+      <h3>Dados pessoais</h3>
+      <form id="form-dados">
+        <div class="field">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" required>
+        </div>
+        <div class="field">
+          <label for="telefone">Telefone</label>
+          <input type="text" id="telefone" required>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="text" value="" id="email-exibicao" disabled>
+        </div>
+        <div class="field">
+          <label>CPF</label>
+          <input type="text" value="" id="cpf-exibicao" disabled>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" style="width: auto;">Salvar dados</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="mensagem-senha" class="form-message"></div>
+
+    <div class="form-panel aberto" style="margin-bottom: 32px;">
+      <h3>Alterar senha</h3>
+      <form id="form-senha">
+        <div class="field">
+          <label for="senha-atual">Senha atual</label>
+          <input type="password" id="senha-atual" required autocomplete="current-password">
+        </div>
+        <div class="field">
+          <label for="nova-senha">Nova senha</label>
+          <input type="password" id="nova-senha" required autocomplete="new-password">
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" style="width: auto;">Alterar senha</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="mensagem-senha-compra" class="form-message"></div>
+
+    <div class="form-panel aberto" style="margin-bottom: 32px;">
+      <h3>Senha de compra</h3>
+      <p class="subtitle" style="margin-bottom: 20px;">Usada para confirmar suas compras. Defina ou altere aqui.</p>
+      <form id="form-senha-compra">
+        <div class="field" id="campo-senha-compra-atual">
+          <label for="senha-compra-atual">Senha de compra atual</label>
+          <input type="password" id="senha-compra-atual">
+        </div>
+        <div class="field">
+          <label for="nova-senha-compra">Nova senha de compra</label>
+          <input type="password" id="nova-senha-compra" required>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" style="width: auto;">Salvar senha de compra</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="mensagem-email" class="form-message"></div>
+
+    <div class="form-panel aberto">
+      <h3>Alterar email</h3>
+      <p class="subtitle" style="margin-bottom: 20px;">Trocar o email vai exigir um novo login.</p>
+      <form id="form-email">
+        <div class="field">
+          <label for="senha-atual-email">Senha atual</label>
+          <input type="password" id="senha-atual-email" required autocomplete="current-password">
+        </div>
+        <div class="field">
+          <label for="novo-email">Novo email</label>
+          <input type="email" id="novo-email" required>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" style="width: auto;">Salvar novo email</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="perfil-overlay" class="perfil-drawer-overlay">
+    <div id="perfil-drawer" class="perfil-drawer">
+      <div class="perfil-drawer-header">
+        <span class="navbar-brand" style="font-size: 1rem;">Menu</span>
+        <button id="perfil-drawer-fechar" class="perfil-drawer-fechar">✕</button>
+      </div>
+      <nav class="perfil-drawer-nav">
+        <a href="perfil.html" class="ativo-atual">Conta</a>
+        <a href="agendamentos.html">Meus Agendamentos</a>
+        <a href="favoritos.html">Favoritos</a>
+      </nav>
+    </div>
+  </div>
+
+  <div id="alerta-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3 id="alerta-titulo">Aviso</h3>
+      <p id="alerta-mensagem" class="subtitle"></p>
+      <div class="form-actions">
+        <button id="alerta-ok" class="btn-primary" style="width: auto;">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmar-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3 id="confirmar-titulo">Confirmar</h3>
+      <p id="confirmar-mensagem" class="subtitle"></p>
+      <div class="form-actions">
+        <button id="confirmar-sim" class="btn-primary" style="width: auto;">Confirmar</button>
+        <button id="confirmar-nao" class="btn-secondary">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/perfil.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Carros — Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="admin-carros.html" class="navbar-brand">CONCESSIONÁRIA · ADMIN</a>
+    <div class="admin-nav-links">
+      <a href="admin-carros.html" class="active">Carros</a>
+      <a href="admin-clientes.html">Clientes</a>
+      <a href="admin-usuarios.html">Usuários</a>
+      <a href="admin-compras.html">Compras</a>
+      <a href="admin-agendamentos.html">Agendamentos</a>
+      <a href="admin-auditoria.html">Auditoria</a>
+      
+    </div>
+    <div class="navbar-actions">
+      <button id="btn-logout" class="btn-ghost">Sair</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="page-header-row">
+      <div class="page-header" style="margin-bottom: 0;">
+        <h1>Gestão de carros</h1>
+        <p>Cadastre, edite e remova veículos do catálogo.</p>
+      </div>
+      <button id="btn-novo" class="btn-secondary">+ Novo carro</button>
+    </div>
+
+    <div id="mensagem" class="form-message"></div>
+
+    <div id="form-panel" class="form-panel">
+      <h3 id="form-titulo">Novo carro</h3>
+      <form id="form-carro">
+        <input type="hidden" id="carro-id">
+        <div class="form-grid">
+          <div class="field">
+            <label for="marca">Marca</label>
+            <input type="text" id="marca" required>
+          </div>
+          <div class="field">
+            <label for="modelo">Modelo</label>
+            <input type="text" id="modelo" required>
+          </div>
+          <div class="field">
+            <label for="cor">Cor</label>
+            <input type="text" id="cor" required>
+          </div>
+          <div class="field">
+            <label for="ano">Ano</label>
+            <input type="number" id="ano" required>
+          </div>
+          <div class="field">
+            <label for="preco">Preço</label>
+            <input type="number" step="0.01" id="preco" required>
+          </div>
+          <div class="field">
+            <label for="quilometragem">Quilometragem</label>
+            <input type="number" id="quilometragem" required>
+          </div>
+          <div class="field">
+            <label for="combustivel">Combustível</label>
+            <select id="combustivel" required>
+              <option value="GASOLINA">Gasolina</option>
+              <option value="ETANOL">Etanol</option>
+              <option value="FLEX">Flex</option>
+              <option value="DIESEL">Diesel</option>
+              <option value="ELETRICO">Elétrico</option>
+              <option value="HIBRIDO">Híbrido</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cambio">Câmbio</label>
+            <select id="cambio" required>
+              <option value="MANUAL">Manual</option>
+              <option value="AUTOMATICO">Automático</option>
+              <option value="CVT">CVT</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="portas">Portas</label>
+            <input type="number" id="portas" required>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Salvar</button>
+          <button type="button" id="btn-cancelar" class="btn-secondary">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Cor</th>
+          <th>Ano</th>
+          <th>Preço</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-carros"></tbody>
+    </table>
+  </div>
+
+  <input type="file" id="input-imagem" accept="image/*" style="display: none;">
+
+  <div id="alerta-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3 id="alerta-titulo">Aviso</h3>
+      <p id="alerta-mensagem" class="subtitle"></p>
+      <div class="form-actions">
+        <button id="alerta-ok" class="btn-primary" style="width: auto;">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmar-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3 id="confirmar-titulo">Confirmar</h3>
+      <p id="confirmar-mensagem" class="subtitle"></p>
+      <div class="form-actions">
+        <button id="confirmar-sim" class="btn-primary" style="width: auto;">Confirmar</button>
+        <button id="confirmar-nao" class="btn-secondary">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin-carros.js"></script>
+</body>
+</html>

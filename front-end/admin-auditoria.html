@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auditoria — Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="admin-carros.html" class="navbar-brand">CONCESSIONÁRIA · ADMIN</a>
+    <div class="admin-nav-links">
+      <a href="admin-carros.html">Carros</a>
+      <a href="admin-clientes.html">Clientes</a>
+      <a href="admin-usuarios.html">Usuários</a>
+      <a href="admin-compras.html">Compras</a>
+      <a href="admin-agendamentos.html">Agendamentos</a>
+      <a href="admin-auditoria.html" class="active">Auditoria</a>
+    </div>
+    <div class="navbar-actions">
+      <button id="btn-logout" class="btn-ghost">Sair</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="page-header">
+      <h1>Auditoria</h1>
+      <p>Registro de criações, edições e exclusões de clientes, com o responsável por cada ação.</p>
+    </div>
+
+    <div id="mensagem" class="form-message"></div>
+
+    <div style="display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px;">
+      <div class="field" style="margin-bottom: 0; min-width: 200px;">
+        <label for="filtro-acao">Ação</label>
+        <select id="filtro-acao">
+          <option value="">Todas</option>
+          <option value="CRIACAO">Criação</option>
+          <option value="ATUALIZACAO">Atualização</option>
+          <option value="EXCLUSAO">Exclusão</option>
+          <option value="CONFIRMACAO">Confirmação</option>
+          <option value="CANCELAMENTO">Cancelamento</option>
+        </select>
+      </div>
+      <div class="field" style="margin-bottom: 0; min-width: 260px;">
+        <label for="filtro-busca">Buscar por responsável ou detalhes</label>
+        <input type="text" id="filtro-busca" placeholder="Ex: marcela, nome ou CPF">
+      </div>
+    </div>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Data e hora</th>
+          <th>Ação</th>
+          <th>Entidade</th>
+          <th>Responsável</th>
+          <th>Detalhes</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-auditoria"></tbody>
+    </table>
+  </div>
+
+  <script src="js/admin-auditoria.js"></script>
+</body>
+</html>

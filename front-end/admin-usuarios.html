@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Usuários — Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="admin-carros.html" class="navbar-brand">CONCESSIONÁRIA · ADMIN</a>
+    <div class="admin-nav-links">
+      <a href="admin-carros.html">Carros</a>
+      <a href="admin-clientes.html">Clientes</a>
+      <a href="admin-usuarios.html" class="active">Usuários</a>
+      <a href="admin-compras.html">Compras</a>
+      <a href="admin-agendamentos.html">Agendamentos</a>
+      <a href="admin-auditoria.html">Auditoria</a>
+    </div>
+    <div class="navbar-actions">
+      <button id="btn-logout" class="btn-ghost">Sair</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="page-header">
+      <h1>Gestão de usuários</h1>
+      <p>Contas de acesso ao sistema. Novas contas são criadas pelo cadastro público.</p>
+    </div>
+
+    <div id="mensagem" class="form-message"></div>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Cliente vinculado</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-usuarios"></tbody>
+    </table>
+  </div>
+
+  <div id="alerta-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3 id="alerta-titulo">Aviso</h3>
+      <p id="alerta-mensagem" class="subtitle"></p>
+      <div class="form-actions">
+        <button id="alerta-ok" class="btn-primary" style="width: auto;">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmar-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3 id="confirmar-titulo">Confirmar</h3>
+      <p id="confirmar-mensagem" class="subtitle"></p>
+      <div class="form-actions">
+        <button id="confirmar-sim" class="btn-primary" style="width: auto;">Confirmar</button>
+        <button id="confirmar-nao" class="btn-secondary">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin-usuarios.js"></script>
+</body>
+</html>

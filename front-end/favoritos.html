@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favoritos — Concessionária</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="catalogo.html" class="navbar-brand">CONCESSIONÁRIA</a>
+    <div class="navbar-actions">
+      <a href="catalogo.html" class="btn-ghost" style="text-decoration: none;">Catálogo</a>
+      <a href="minhas-compras.html" class="btn-ghost" style="text-decoration: none;">Minhas Compras</a>
+      <button id="perfil-trigger" class="btn-ghost">Perfil</button>
+      <button id="btn-logout" class="btn-ghost">Sair</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="page-header">
+      <h1>Favoritos</h1>
+      <p>Os carros que você marcou para ver depois.</p>
+    </div>
+
+    <div id="lista-favoritos" class="car-grid"></div>
+  </div>
+
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal-conteudo">
+      <button id="btn-fechar-modal" class="modal-fechar">✕</button>
+
+      <div class="modal-imagem-container">
+        <span class="modal-badge-disponivel">Disponível</span>
+        <img id="modal-imagem" src="" alt="" class="modal-imagem">
+      </div>
+
+      <div class="modal-detalhes">
+        <div class="modal-eyebrow" id="modal-marca"></div>
+        <h2 id="modal-modelo"></h2>
+
+        <div class="modal-specs">
+          <div class="modal-spec-item">
+            <span class="modal-spec-label">Ano</span>
+            <span class="modal-spec-valor" id="modal-ano"></span>
+          </div>
+          <div class="modal-spec-item">
+            <span class="modal-spec-label">Cor</span>
+            <span class="modal-spec-valor" id="modal-cor"></span>
+          </div>
+          <div class="modal-spec-item">
+            <span class="modal-spec-label">KM</span>
+            <span class="modal-spec-valor" id="modal-km"></span>
+          </div>
+          <div class="modal-spec-item">
+            <span class="modal-spec-label">Combustível</span>
+            <span class="modal-spec-valor" id="modal-combustivel"></span>
+          </div>
+          <div class="modal-spec-item">
+            <span class="modal-spec-label">Câmbio</span>
+            <span class="modal-spec-valor" id="modal-cambio"></span>
+          </div>
+          <div class="modal-spec-item">
+            <span class="modal-spec-label">Portas</span>
+            <span class="modal-spec-valor" id="modal-portas"></span>
+          </div>
+        </div>
+
+        <div class="modal-preco-bloco">
+          <span class="modal-preco-label">Preço</span>
+          <div class="car-price" id="modal-preco"></div>
+        </div>
+
+        <button id="btn-comprar-modal" class="btn-primary">Comprar</button>
+        <button id="btn-agendar-modal" class="btn-secondary" style="width: 100%; margin-top: 10px;">Agendar visita</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="prompt-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3 id="prompt-titulo">Confirmação</h3>
+      <p id="prompt-mensagem" class="subtitle"></p>
+      <div class="field">
+        <input type="password" id="prompt-input" autocomplete="off">
+      </div>
+      <div class="form-actions">
+        <button id="prompt-confirmar" class="btn-primary" style="width: auto;">Confirmar</button>
+        <button id="prompt-cancelar" class="btn-secondary">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="agendar-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3>Agendar visita</h3>
+      <p class="subtitle">Escolha o vendedor, a data e o horário para ver o carro.</p>
+      <div class="field">
+        <label for="agendar-vendedor">Vendedor</label>
+        <select id="agendar-vendedor"></select>
+      </div>
+      <div class="field">
+        <label for="agendar-data">Data</label>
+        <input type="date" id="agendar-data">
+      </div>
+      <div class="field">
+        <label for="agendar-hora">Horário</label>
+        <input type="time" id="agendar-hora">
+      </div>
+      <div class="form-actions">
+        <button id="agendar-confirmar" class="btn-primary" style="width: auto;">Confirmar</button>
+        <button id="agendar-cancelar" class="btn-secondary">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="perfil-overlay" class="perfil-drawer-overlay">
+    <div id="perfil-drawer" class="perfil-drawer">
+      <div class="perfil-drawer-header">
+        <span class="navbar-brand" style="font-size: 1rem;">Menu</span>
+        <button id="perfil-drawer-fechar" class="perfil-drawer-fechar">✕</button>
+      </div>
+      <nav class="perfil-drawer-nav">
+        <a href="perfil.html">Conta</a>
+        <a href="agendamentos.html">Meus Agendamentos</a>
+        <a href="favoritos.html" class="ativo-atual">Favoritos</a>
+      </nav>
+    </div>
+  </div>
+
+  <div id="alerta-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3 id="alerta-titulo">Aviso</h3>
+      <p id="alerta-mensagem" class="subtitle"></p>
+      <div class="form-actions">
+        <button id="alerta-ok" class="btn-primary" style="width: auto;">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmar-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3 id="confirmar-titulo">Confirmar</h3>
+      <p id="confirmar-mensagem" class="subtitle"></p>
+      <div class="form-actions">
+        <button id="confirmar-sim" class="btn-primary" style="width: auto;">Confirmar</button>
+        <button id="confirmar-nao" class="btn-secondary">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/zoom-modal.js"></script>
+  <script src="js/favoritos.js"></script>
+  <script src="js/favoritos.js"></script>
+</body>
+</html>

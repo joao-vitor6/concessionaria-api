@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meus Agendamentos — Concessionária</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="catalogo.html" class="navbar-brand">CONCESSIONÁRIA</a>
+    <div class="navbar-actions">
+      <a href="catalogo.html" class="btn-ghost" style="text-decoration: none;">Catálogo</a>
+      <a href="minhas-compras.html" class="btn-ghost" style="text-decoration: none;">Minhas Compras</a>
+      <button id="perfil-trigger" class="btn-ghost">Perfil</button>
+      <button id="btn-logout" class="btn-ghost">Sair</button>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <div class="page-header">
+      <h1>Meus agendamentos</h1>
+      <p>Visitas agendadas para ver os carros de perto.</p>
+    </div>
+
+    <div id="lista-agendamentos"></div>
+  </div>
+
+  <div id="perfil-overlay" class="perfil-drawer-overlay">
+    <div id="perfil-drawer" class="perfil-drawer">
+      <div class="perfil-drawer-header">
+        <span class="navbar-brand" style="font-size: 1rem;">Menu</span>
+        <button id="perfil-drawer-fechar" class="perfil-drawer-fechar">✕</button>
+      </div>
+      <nav class="perfil-drawer-nav">
+        <a href="perfil.html">Conta</a>
+        <a href="agendamentos.html" class="ativo-atual">Meus Agendamentos</a>
+        <a href="favoritos.html">Favoritos</a>
+      </nav>
+    </div>
+  </div>
+
+  <div id="alerta-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3 id="alerta-titulo">Aviso</h3>
+      <p id="alerta-mensagem" class="subtitle"></p>
+      <div class="form-actions">
+        <button id="alerta-ok" class="btn-primary" style="width: auto;">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmar-overlay" class="modal-overlay">
+    <div class="prompt-card">
+      <h3 id="confirmar-titulo">Confirmar</h3>
+      <p id="confirmar-mensagem" class="subtitle"></p>
+      <div class="form-actions">
+        <button id="confirmar-sim" class="btn-primary" style="width: auto;">Confirmar</button>
+        <button id="confirmar-nao" class="btn-secondary">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/agendamentos.js"></script>
+</body>
+</html>
